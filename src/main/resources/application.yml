@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    hikari:
+      idle-timeout: ${DB_POOL_IDLE_TIMEOUT_IN_MS:30000}
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:2}
+      minimum-idle: ${DB_POOL_MIN_IDLE:1}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/reporting_service}
+    username: ${DATASOURCE_USERNAME:postgres}
+    password: ${DATASOURCE_PASSWORD:admin}
+  sql:
+    init:
+      mode: ${DATA_INITIALIZATION_MODE:always}
+  jpa:
+    hibernate:
+      ddl-auto: create
+server:
+  servlet:
+    context-path: /reporting-service
+  shutdown:
+    grace-period: ${SHUTDOWN_GRACE_PERIOD:5s}
+  port: ${PORT:8080}
